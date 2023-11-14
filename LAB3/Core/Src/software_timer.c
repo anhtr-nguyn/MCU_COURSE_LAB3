@@ -9,15 +9,18 @@
 
 int TIME_CYCLE = 10;
 
+//timer1 is used for one way traffic light
 int timer1_counter = 0;
 int timer1_flag = 0;
 
+//timer2 is used for one way traffic light
+//(different from timer1, two ways of traffic run dependently)
 int timer2_counter = 0;
 int timer2_flag = 0;
-
+//timer3 is used for setting the frequency of 4 led segment
 int timer3_counter = 0;
 int timer3_flag = 0;
-
+//timer4 is used for the frequency of each led when enter MODE2->4
 int timer4_counter = 0;
 int timer4_flag = 0;
 
@@ -80,5 +83,5 @@ void timerRun(){
 	timer1Run();
 	timer2Run();
 	timer3Run();
-//	timer4Run();
+	timer4Run();
 }

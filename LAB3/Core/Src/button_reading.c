@@ -6,6 +6,8 @@
  */
 
 #include "button_reading.h"
+#include "main.h"
+#include "software_timer.h"
 
 struct ButtonType{
 	int key0;

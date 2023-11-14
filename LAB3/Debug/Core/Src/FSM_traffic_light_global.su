@@ -1,2 +1,2 @@
-FSM_traffic_light_global.c:19:6:blinkyLed	16	static
-FSM_traffic_light_global.c:23:6:FSMTrafficLightGlobalRun	8	static
+FSM_traffic_light_global.c:26:6:blinkyLed	16	static
+FSM_traffic_light_global.c:66:6:FSMTrafficLightGlobalRun	8	static

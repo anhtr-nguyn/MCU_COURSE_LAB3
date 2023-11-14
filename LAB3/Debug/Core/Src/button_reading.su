@@ -1,7 +1,7 @@
-button_reading.c:22:6:getbutton1Value	8	static
-button_reading.c:41:6:getbutton2Value	8	static
-button_reading.c:60:6:getbutton3Value	8	static
-button_reading.c:82:5:isButton1Pressed	4	static
-button_reading.c:95:5:isButton2Pressed	4	static
-button_reading.c:107:5:isButton3Pressed	4	static
-button_reading.c:116:6:getButtonValue	8	static
+button_reading.c:24:6:getbutton1Value	8	static
+button_reading.c:43:6:getbutton2Value	8	static
+button_reading.c:62:6:getbutton3Value	8	static
+button_reading.c:84:5:isButton1Pressed	4	static
+button_reading.c:97:5:isButton2Pressed	4	static
+button_reading.c:109:5:isButton3Pressed	4	static
+button_reading.c:118:6:getButtonValue	8	static

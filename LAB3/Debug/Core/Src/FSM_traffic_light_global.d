@@ -1,6 +1,7 @@
 Core/Src/FSM_traffic_light_global.o: \
  ../Core/Src/FSM_traffic_light_global.c \
  ../Core/Inc/FSM_traffic_light_global.h ../Core/Inc/button_reading.h \
+ ../Core/Inc/FSM_traffic_light_mode_1.h ../Core/Inc/display_7seg.h \
  ../Core/Inc/main.h ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h \
  ../Core/Inc/stm32f1xx_hal_conf.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h \
@@ -25,12 +26,15 @@ Core/Src/FSM_traffic_light_global.o: \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h \
- ../Core/Inc/software_timer.h ../Core/Inc/FSM_traffic_light_mode_1.h \
- ../Core/Inc/display_7seg.h
+ ../Core/Inc/software_timer.h
 
 ../Core/Inc/FSM_traffic_light_global.h:
 
 ../Core/Inc/button_reading.h:
+
+../Core/Inc/FSM_traffic_light_mode_1.h:
+
+../Core/Inc/display_7seg.h:
 
 ../Core/Inc/main.h:
 
@@ -83,7 +87,3 @@ Core/Src/FSM_traffic_light_global.o: \
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h:
 
 ../Core/Inc/software_timer.h:
-
-../Core/Inc/FSM_traffic_light_mode_1.h:
-
-../Core/Inc/display_7seg.h:

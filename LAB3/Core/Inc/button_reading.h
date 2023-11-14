@@ -8,9 +8,6 @@
 #ifndef INC_BUTTON_READING_H_
 #define INC_BUTTON_READING_H_
 
-#include "main.h"
-#include "software_timer.h"
-
 #define PRESSED		0
 #define RELEASED 	1
 

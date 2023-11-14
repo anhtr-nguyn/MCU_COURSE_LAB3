@@ -12,13 +12,56 @@
 #include "button_reading.h"
 #include "FSM_traffic_light_mode_1.h"
 #include "display_7seg.h"
+#include "main.h"
+#include "software_timer.h"
 
 int FSM_STATUS = INIT;
 int valueSetting = 0;
+int BLINKY_LED_STATUS = INIT;
+//
+//This function is used to blink the LED with frequency 2HZ when on MODE2->4 (editing it)
+//Param:
+//		int LED: the LED will be blinked ( RED, YELLOW, GREEN)
 
 void blinkyLed(int LED) {
-	HAL_GPIO_WritePin(GPIOA, LED_GREEN_1_Pin | LED_GREEN_2_Pin | LED_RED_1_Pin | LED_RED_2_Pin
-			|LED_YELLOW_1_Pin | LED_YELLOW_2_Pin, OFF);
+	switch(BLINKY_LED_STATUS){
+	case INIT:
+		// turn off all led
+		HAL_GPIO_WritePin(GPIOA, LED_RED_1_Pin | LED_YELLOW_1_Pin |LED_GREEN_1_Pin
+						|LED_RED_2_Pin|LED_YELLOW_2_Pin|LED_GREEN_2_Pin, OFF);
+
+		if (LED == RED) BLINKY_LED_STATUS = LED;
+		if (LED == GREEN) BLINKY_LED_STATUS = GREEN;
+		if (LED == YELLOW) BLINKY_LED_STATUS = YELLOW;
+		setTimer4(250); // 2Hz
+		break;
+	case RED:
+		if (timer4_flag == 1)
+		{
+			setTimer4(250);
+			HAL_GPIO_TogglePin(GPIOA, LED_RED_1_Pin | LED_RED_2_Pin);
+		}
+		break;
+
+	case YELLOW:
+		if (timer4_flag == 1)
+		{
+			setTimer4(250);
+			HAL_GPIO_TogglePin(GPIOA, LED_YELLOW_1_Pin| LED_YELLOW_2_Pin);
+		}
+		break;
+
+	case GREEN:
+		if (timer4_flag == 1)
+		{
+			setTimer4(250);
+			HAL_GPIO_TogglePin(GPIOA, LED_GREEN_1_Pin | LED_GREEN_2_Pin);
+		}
+		break;
+
+	default:
+		break;
+	}
 }
 void FSMTrafficLightGlobalRun(void)
 {
@@ -27,6 +70,7 @@ void FSMTrafficLightGlobalRun(void)
 		FSM_STATUS = MODE1;
 		updateBufferWithMode(FSM_STATUS);
 		displaySegment();
+		break;
 		case MODE1:
 			trafficLightRun();
 			updateBufferWithMode(FSM_STATUS);
@@ -35,6 +79,7 @@ void FSMTrafficLightGlobalRun(void)
 			if (isButton1Pressed()) {
 				FSM_STATUS = MODE2;
 				valueSetting = timeRed;
+				BLINKY_LED_STATUS = INIT;
 			}
 			break;
 		case MODE2:
@@ -44,6 +89,7 @@ void FSMTrafficLightGlobalRun(void)
 			if (isButton1Pressed()) {
 				FSM_STATUS = MODE3;
 				valueSetting = timeYellow;
+				BLINKY_LED_STATUS = INIT;
 			}
 			else if (isButton2Pressed()){
 				valueSetting++;
@@ -61,6 +107,7 @@ void FSMTrafficLightGlobalRun(void)
 			if (isButton1Pressed()) {
 				FSM_STATUS = MODE4;
 				valueSetting = timeGreen;
+				BLINKY_LED_STATUS = INIT;
 			}
 			else if (isButton2Pressed()){
 				valueSetting++;
